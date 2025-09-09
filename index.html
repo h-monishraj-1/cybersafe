@@ -1,0 +1,2206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberSafe Hub - Stay Safe Online | Cybersecurity Awareness for Everyone</title>
+    <meta name="description" content="Learn cybersecurity awareness, online safety tips, and stay updated with latest cyber threats. Protect yourself from phishing attacks, ransomware, and digital threats in 2025.">
+    <meta name="keywords" content="cybersecurity awareness, online safety tips, cybersecurity news 2025, protect from phishing attacks, password safety, latest cyber threats, digital safety for students">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="CyberSafe Hub - Cybersecurity Awareness for Everyone">
+    <meta property="og:description" content="Stay safe online with expert cybersecurity tips and latest threat updates">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://cybersafe-hub.netlify.app">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/umd/lucide.js"></script>
+    
+    <style>
+        :root {
+            --bg-primary: #0a0b1e;
+            --bg-secondary: #1a1b2e;
+            --bg-card: #16213e;
+            --text-primary: #ffffff;
+            --text-secondary: #a0aec0;
+            --accent-blue: #3b82f6;
+            --accent-cyan: #06b6d4;
+            --accent-purple: #8b5cf6;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --border: #2d3748;
+            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(26, 27, 46, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-blue);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-blue);
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--accent-blue);
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--gradient);
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.875rem 2rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--accent-blue);
+            color: white;
+            box-shadow: var(--shadow);
+        }
+
+        .btn-primary:hover {
+            background: #2563eb;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--accent-blue);
+            border: 2px solid var(--accent-blue);
+        }
+
+        .btn-outline:hover {
+            background: var(--accent-blue);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Highlights Section */
+        .highlights {
+            padding: 6rem 0;
+            background: var(--bg-secondary);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            color: var(--text-primary);
+        }
+
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .highlight-card {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 1rem;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid var(--border);
+        }
+
+        .highlight-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .highlight-icon {
+            width: 4rem;
+            height: 4rem;
+            margin: 0 auto 1.5rem;
+            background: var(--accent-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .highlight-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .highlight-card p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight-card .btn {
+            width: 100%;
+        }
+
+        /* Page Content */
+        .page-content {
+            padding: 8rem 0 4rem;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .page-header p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .content-section {
+            margin-bottom: 4rem;
+        }
+
+        .content-section h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--accent-blue);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .content-section h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 2rem 0 1rem;
+            color: var(--text-primary);
+        }
+
+        .content-section p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .content-section ul {
+            color: var(--text-secondary);
+            padding-left: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .content-section li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Cards Layout */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .card {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 1rem;
+            border: 1px solid var(--border);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+        }
+
+        .card h3 {
+            color: var(--accent-blue);
+            margin-bottom: 1rem;
+        }
+
+        /* News Articles */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .news-card {
+            background: var(--bg-card);
+            border-radius: 1rem;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .news-image {
+            width: 100%;
+            height: 200px;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .news-content {
+            padding: 1.5rem;
+        }
+
+        .news-meta {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+
+        .news-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .news-card p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        /* Quiz Styles */
+        .quiz-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .question {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 1rem;
+            margin-bottom: 2rem;
+            border: 1px solid var(--border);
+        }
+
+        .question h3 {
+            color: var(--accent-blue);
+            margin-bottom: 1.5rem;
+        }
+
+        .options {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .option {
+            background: var(--bg-secondary);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .option:hover {
+            border-color: var(--accent-blue);
+        }
+
+        .option.selected {
+            border-color: var(--accent-blue);
+            background: rgba(59, 130, 246, 0.1);
+        }
+
+        .quiz-result {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 1rem;
+            text-align: center;
+            border: 1px solid var(--border);
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background: var(--accent-blue);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1px;
+        }
+
+        .timeline-item {
+            position: relative;
+            width: 50%;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-content {
+            background: var(--bg-card);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            border: 1px solid var(--border);
+            position: relative;
+        }
+
+        .timeline-content h4 {
+            color: var(--accent-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content span {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            color: var(--text-primary);
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* Social Links */
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+
+        .social-link {
+            width: 3rem;
+            height: 3rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--accent-blue);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--bg-secondary);
+            padding: 3rem 0 1rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: var(--accent-blue);
+            margin-bottom: 1rem;
+        }
+
+        .footer-section a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent-blue);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+
+        /* Share Buttons */
+        .share-buttons {
+            display: flex;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .share-btn {
+            padding: 0.5rem 1rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .share-btn:hover {
+            background: var(--accent-blue);
+            color: white;
+        }
+
+        /* Hidden by default */
+        .hidden {
+            display: none;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .mobile-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--bg-secondary);
+                flex-direction: column;
+                padding: 2rem;
+                border-top: 1px solid var(--border);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .timeline::after {
+                left: 20px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 50px;
+                left: 0 !important;
+            }
+
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        /* Loading States */
+        .loading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .spinner {
+            width: 2rem;
+            height: 2rem;
+            border: 2px solid var(--border);
+            border-top-color: var(--accent-blue);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <i data-lucide="shield"></i>
+                CyberSafe Hub
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#" class="nav-link active" data-page="home">Home</a></li>
+                <li><a href="#" class="nav-link" data-page="about">About</a></li>
+                <li><a href="#" class="nav-link" data-page="awareness">Awareness</a></li>
+                <li><a href="#" class="nav-link" data-page="news">News</a></li>
+                <li><a href="#" class="nav-link" data-page="quiz">Quiz</a></li>
+                <li><a href="#" class="nav-link" data-page="resources">Resources</a></li>
+                <li><a href="#" class="nav-link" data-page="contact">Contact</a></li>
+            </ul>
+            <button class="mobile-toggle" id="mobileToggle">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <main id="mainContent">
+        <!-- Home Page -->
+        <div id="homePage" class="page">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="hero-content">
+                    <h1>Stay Safe Online – Cybersecurity Awareness for Everyone</h1>
+                    <p>Learn how to protect yourself from online threats and stay updated with the latest cybersecurity news.</p>
+                    <div class="cta-buttons">
+                        <a href="#" class="btn btn-primary" data-page="awareness">
+                            <i data-lucide="shield-check"></i>
+                            Learn Safety Tips
+                        </a>
+                        <a href="#" class="btn btn-outline" data-page="news">
+                            <i data-lucide="newspaper"></i>
+                            Read Latest News
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Highlights Section -->
+            <section class="highlights">
+                <div class="container">
+                    <h2 class="section-title">Protect Yourself Online</h2>
+                    <div class="highlights-grid">
+                        <div class="highlight-card">
+                            <div class="highlight-icon">
+                                <i data-lucide="book-open"></i>
+                            </div>
+                            <h3>Cybersecurity Awareness</h3>
+                            <p>Learn about phishing attacks, ransomware, password safety, and two-factor authentication to stay protected.</p>
+                            <a href="#" class="btn btn-primary" data-page="awareness">Explore Awareness</a>
+                        </div>
+                        <div class="highlight-card">
+                            <div class="highlight-icon">
+                                <i data-lucide="newspaper"></i>
+                            </div>
+                            <h3>Latest Cyber News</h3>
+                            <p>Stay updated with the latest cybersecurity threats, breaches, and security updates from trusted sources.</p>
+                            <a href="#" class="btn btn-primary" data-page="news">Read News</a>
+                        </div>
+                        <div class="highlight-card">
+                            <div class="highlight-icon">
+                                <i data-lucide="download"></i>
+                            </div>
+                            <h3>Security Resources</h3>
+                            <p>Access downloadable guides, checklists, and links to trusted cybersecurity organizations and tools.</p>
+                            <a href="#" class="btn btn-primary" data-page="resources">Get Resources</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- About Page -->
+        <div id="aboutPage" class="">
+            <section class="page-content">
+                <div class="container">
+                    <div class="page-header">
+                        <h1>About CyberSafe Hub</h1>
+                        <p>Empowering everyone to stay safe in the digital world through education and awareness.</p>
+                    </div>
+
+                    <div class="cards-grid">
+                        <div class="card">
+                            <h3><i data-lucide="target"></i> Our Mission</h3>
+                            <p>CyberSafe Hub is dedicated to raising cybersecurity awareness among students, professionals, and the general public. We believe that everyone deserves to navigate the digital world safely and confidently.</p>
+                        </div>
+                        <div class="card">
+                            <h3><i data-lucide="users"></i> Why It Matters</h3>
+                            <p>With cyber threats increasing daily, cybersecurity education is crucial for society. From phishing attacks to ransomware, understanding these threats helps protect personal data, financial information, and digital privacy.</p>
+                        </div>
+                        <div class="card">
+                            <h3><i data-lucide="graduation-cap"></i> Our Audience</h3>
+                            <p>We serve students learning about digital safety, professionals protecting their workplace, and everyday internet users who want to stay secure online. Our content is designed to be accessible to all skill levels.</p>
+                        </div>
+                    </div>
+
+                    <div class="content-section">
+                        <h2><i data-lucide="heart"></i> Our Values</h2>
+                        <div class="cards-grid">
+                            <div class="card">
+                                <h3>Education First</h3>
+                                <p>We prioritize clear, actionable education over fear-mongering, helping people understand threats without creating anxiety.</p>
+                            </div>
+                            <div class="card">
+                                <h3>Accessibility</h3>
+                                <p>Our content is designed to be understood by everyone, regardless of technical background or experience level.</p>
+                            </div>
+                            <div class="card">
+                                <h3>Community</h3>
+                                <p>We believe in building a community of informed digital citizens who can protect themselves and help others stay safe.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Awareness Page -->
+        <div id="awarenessPage" class="">
+            <section class="page-content">
+                <div class="container">
+                    <div class="page-header">
+                        <h1>Cybersecurity Awareness</h1>
+                        <p>Essential knowledge to protect yourself from common cyber threats and stay safe online.</p>
+                    </div>
+
+                    <div class="content-section">
+                        <h2><i data-lucide="fish"></i> Phishing Attacks</h2>
+                        <p>Phishing is a type of social engineering attack where cybercriminals impersonate trusted entities to steal sensitive information like passwords, credit card numbers, or personal data.</p>
+                        
+                        <h3>How to Identify Phishing:</h3>
+                        <ul>
+                            <li>Urgent or threatening language demanding immediate action</li>
+                            <li>Generic greetings like "Dear Customer" instead of your name</li>
+                            <li>Suspicious email addresses that don't match the claimed sender</li>
+                            <li>Links that don't match the legitimate website URL</li>
+                            <li>Requests for sensitive information via email</li>
+                            <li>Poor grammar and spelling mistakes</li>
+                        </ul>
+
+                        <h3>Protection Tips:</h3>
+                        <ul>
+                            <li>Always verify sender identity through independent channels</li>
+                            <li>Hover over links to see the actual destination before clicking</li>
+                            <li>Type URLs directly into your browser instead of clicking links</li>
+                            <li>Use email filters and anti-phishing tools</li>
+                            <li>Report suspicious emails to your IT department or email provider</li>
+                        </ul>
+                    </div>
+
+                    <div class="content-section">
+                        <h2><i data-lucide="lock"></i> Ransomware</h2>
+                        <p>Ransomware is malicious software that encrypts your files and demands payment for decryption. It's one of the most damaging types of cyberattacks affecting individuals and organizations.</p>
+                        
+                        <h3>How Ransomware Works:</h3>
+                        <ul>
+                            <li>Gains access through phishing emails, malicious downloads, or software vulnerabilities</li>
+                            <li>Encrypts files on infected systems making them inaccessible</li>
+                            <li>Displays ransom demands, usually requesting cryptocurrency payment</li>
+                            <li>May threaten to delete files or publish sensitive data</li>
+                        </ul>
+
+                        <h3>Prevention Strategies:</h3>
+                        <ul>
+                            <li>Maintain regular, offline backups of important data</li>
+                            <li>Keep operating systems and software updated</li>
+                            <li>Use reputable antivirus software with real-time protection</li>
+                            <li>Avoid downloading software from untrusted sources</li>
+                            <li>Implement network segmentation to limit spread</li>
+                            <li>Train employees on cybersecurity best practices</li>
+                        </ul>
+                    </div>
+
+                    <div class="content-section">
+                        <h2><i data-lucide="key"></i> Password Safety</h2>
+                        <p>Strong passwords are your first line of defense against unauthorized access to your accounts and personal information.</p>
+                        
+                        <h3>Password Best Practices:</h3>
+                        <ul>
+                            <li>Use at least 12 characters with a mix of uppercase, lowercase, numbers, and symbols</li>
+                            <li>Create unique passwords for each account</li>
+                            <li>Use passphrases - combinations of random words are easier to remember</li>
+                            <li>Avoid personal information like birthdays, names, or addresses</li>
+                            <li>Don't use common passwords like "password123" or "qwerty"</li>
+                            <li>Change default passwords on all devices and accounts</li>
+                        </ul>
+
+                        <h3>Password Management:</h3>
+                        <ul>
+                            <li>Use a reputable password manager to generate and store unique passwords</li>
+                            <li>Enable automatic password generation for new accounts</li>
+                            <li>Regularly audit and update old or weak passwords</li>
+                            <li>Never share passwords via email or text messages</li>
+                            <li>Use secure password recovery options</li>
+                        </ul>
+                    </div>
+
+                    <div class="content-section">
+                        <h2><i data-lucide="smartphone"></i> Two-Factor Authentication</h2>
+                        <p>Two-Factor Authentication (2FA) adds an extra layer of security by requiring two forms of verification to access your accounts.</p>
+                        
+                        <h3>Types of 2FA:</h3>
+                        <ul>
+                            <li><strong>SMS/Text Messages:</strong> Codes sent to your phone number</li>
+                            <li><strong>Authenticator Apps:</strong> Time-based codes from apps like Google Authenticator</li>
+                            <li><strong>Hardware Tokens:</strong> Physical devices that generate codes</li>
+                            <li><strong>Biometric:</strong> Fingerprints, face recognition, or voice recognition</li>
+                            <li><strong>Push Notifications:</strong> Approve login attempts through mobile apps</li>
+                        </ul>
+
+                        <h3>Why 2FA is Important:</h3>
+                        <ul>
+                            <li>Protects accounts even if passwords are compromised</li>
+                            <li>Significantly reduces the risk of unauthorized access</li>
+                            <li>Required by many organizations for sensitive data access</li>
+                            <li>Easy to set up and use on most platforms</li>
+                            <li>Provides alerts when someone attempts to access your accounts</li>
+                        </ul>
+
+                        <h3>Best Practices:</h3>
+                        <ul>
+                            <li>Enable 2FA on all accounts that support it, especially email and financial accounts</li>
+                            <li>Use authenticator apps instead of SMS when possible</li>
+                            <li>Keep backup codes in a secure location</li>
+                            <li>Register multiple devices for 2FA when available</li>
+                            <li>Regularly review and update 2FA settings</li>
+                        </ul>
+                    </div>
+
+                    <div class="content-section">
+                        <h2><i data-lucide="clock"></i> Major Cyberattack Timeline</h2>
+                        <p>Understanding the history of major cyberattacks helps us learn from past incidents and prepare for future threats.</p>
+                        
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-content">
+                                    <h4>Equifax Data Breach</h4>
+                                    <span>2017</span>
+                                    <p>Personal information of 147 million people compromised, including Social Security numbers and credit card data.</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-content">
+                                    <h4>WannaCry Ransomware</h4>
+                                    <span>2017</span>
+                                    <p>Global ransomware attack affecting over 300,000 computers across 150+ countries, including critical infrastructure.</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-content">
+                                    <h4>SolarWinds Supply Chain Attack</h4>
+                                    <span>2020</span>
+                                    <p>Sophisticated attack compromising software used by government agencies and major corporations worldwide.</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-content">
+                                    <h4>Colonial Pipeline Ransomware</h4>
+                                    <span>2021</span>
+                                    <p>DarkSide ransomware shut down the largest fuel pipeline in the US, causing widespread gas shortages.</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-content">
+                                    <h4>Log4j Vulnerability</h4>
+                                    <span>2021</span>
+                                    <p>Critical vulnerability in widely-used Java logging library affected millions of applications worldwide.</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-content">
+                                    <h4>LastPass Data Breaches</h4>
+                                    <span>2022</span>
+                                    <p>Password manager company suffered multiple breaches exposing encrypted password vaults of millions of users.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- News Page -->
+        <div id="newsPage" class="">
+            <section class="page-content">
+                <div class="container">
+                    <div class="page-header">
+                        <h1>Latest Cybersecurity News</h1>
+                        <p>Stay informed about the latest cyber threats, security updates, and industry developments.</p>
+                    </div>
+
+                    <div class="news-grid">
+                        <article class="news-card" data-article="phishing2025">
+                            <div class="news-image">
+                                <i data-lucide="fish"></i>
+                            </div>
+                            <div class="news-content">
+                                <div class="news-meta">March 15, 2025 | Threat Intelligence</div>
+                                <h3>Top 5 Phishing Scams in 2025 You Should Know About</h3>
+                                <p>New sophisticated phishing techniques are targeting users through AI-generated content and deepfake technology. Learn how to identify and avoid these emerging threats.</p>
+                                <div class="share-buttons">
+                                    <a href="#" class="share-btn" data-platform="twitter" data-article="phishing2025">
+                                        <i data-lucide="twitter"></i> Tweet
+                                    </a>
+                                    <a href="#" class="share-btn" data-platform="linkedin" data-article="phishing2025">
+                                        <i data-lucide="linkedin"></i> Share
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="news-card" data-article="apple2025">
+                            <div class="news-image">
+                                <i data-lucide="apple"></i>
+                            </div>
+                            <div class="news-content">
+                                <div class="news-meta">March 12, 2025 | Security Updates</div>
+                                <h3>Apple Releases Critical Security Update – Why You Should Update Now</h3>
+                                <p>Apple patches zero-day vulnerabilities affecting iOS, macOS, and Safari. The update addresses critical security flaws that could allow remote code execution.</p>
+                                <div class="share-buttons">
+                                    <a href="#" class="share-btn" data-platform="twitter" data-article="apple2025">
+                                        <i data-lucide="twitter"></i> Tweet
+                                    </a>
+                                    <a href="#" class="share-btn" data-platform="linkedin" data-article="apple2025">
+                                        <i data-lucide="linkedin"></i> Share
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="news-card" data-article="ai-cyber">
+                            <div class="news-image">
+                                <i data-lucide="brain"></i>
+                            </div>
+                            <div class="news-content">
+                                <div class="news-meta">March 10, 2025 | AI Security</div>
+                                <h3>How AI is Revolutionizing Both Cyber Attacks and Defense</h3>
+                                <p>Artificial intelligence is being weaponized by cybercriminals while simultaneously strengthening cybersecurity defenses. Explore the dual nature of AI in cybersecurity.</p>
+                                <div class="share-buttons">
+                                    <a href="#" class="share-btn" data-platform="twitter" data-article="ai-cyber">
+                                        <i data-lucide="twitter"></i> Tweet
+                                    </a>
+                                    <a href="#" class="share-btn" data-platform="linkedin" data-article="ai-cyber">
+                                        <i data-lucide="linkedin"></i> Share
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="news-card" data-article="quantum-threat">
+                            <div class="news-image">
+                                <i data-lucide="zap"></i>
+                            </div>
+                            <div class="news-content">
+                                <div class="news-meta">March 8, 2025 | Future Threats</div>
+                                <h3>Preparing for the Quantum Computing Cybersecurity Threat</h3>
+                                <p>As quantum computing advances, current encryption methods face obsolescence. Learn about post-quantum cryptography and how organizations are preparing.</p>
+                                <div class="share-buttons">
+                                    <a href="#" class="share-btn" data-platform="twitter" data-article="quantum-threat">
+                                        <i data-lucide="twitter"></i> Tweet
+                                    </a>
+                                    <a href="#" class="share-btn" data-platform="linkedin" data-article="quantum-threat">
+                                        <i data-lucide="linkedin"></i> Share
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="news-card" data-article="iot-security">
+                            <div class="news-image">
+                                <i data-lucide="wifi"></i>
+                            </div>
+                            <div class="news-content">
+                                <div class="news-meta">March 5, 2025 | IoT Security</div>
+                                <h3>IoT Devices: The Weakest Link in Home Security</h3>
+                                <p>Smart home devices continue to be vulnerable to cyberattacks. Security researchers demonstrate new attack vectors through compromised IoT devices.</p>
+                                <div class="share-buttons">
+                                    <a href="#" class="share-btn" data-platform="twitter" data-article="iot-security">
+                                        <i data-lucide="twitter"></i> Tweet
+                                    </a>
+                                    <a href="#" class="share-btn" data-platform="linkedin" data-article="iot-security">
+                                        <i data-lucide="linkedin"></i> Share
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="news-card" data-article="zero-trust">
+                            <div class="news-image">
+                                <i data-lucide="shield-x"></i>
+                            </div>
+                            <div class="news-content">
+                                <div class="news-meta">March 3, 2025 | Enterprise Security</div>
+                                <h3>Zero Trust Architecture: The New Standard for Enterprise Security</h3>
+                                <p>Major corporations are adopting zero trust security models. Learn why "never trust, always verify" is becoming the gold standard for network security.</p>
+                                <div class="share-buttons">
+                                    <a href="#" class="share-btn" data-platform="twitter" data-article="zero-trust">
+                                        <i data-lucide="twitter"></i> Tweet
+                                    </a>
+                                    <a href="#" class="share-btn" data-platform="linkedin" data-article="zero-trust">
+                                        <i data-lucide="linkedin"></i> Share
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Individual Article Views -->
+        <div id="articleView" class="">
+            <section class="page-content">
+                <div class="container">
+                    <div class="page-header">
+                        <h1 id="articleTitle">Article Title</h1>
+                        <p id="articleMeta">Article metadata</p>
+                        <button class="btn btn-outline" id="backToNews">
+                            <i data-lucide="arrow-left"></i> Back to News
+                        </button>
+                    </div>
+                    <div id="articleContent" class="content-section">
+                        <!-- Article content will be populated by JavaScript -->
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Quiz Page -->
+        <div id="quizPage" class="">
+            <section class="page-content">
+                <div class="container">
+                    <div class="page-header">
+                        <h1>How Safe Are You Online?</h1>
+                        <p>Test your cybersecurity knowledge with this interactive quiz and discover areas for improvement.</p>
+                    </div>
+
+                    <div class="quiz-container">
+                        <div id="quizQuestions">
+                            <div class="question" data-question="0">
+                                <h3>1. What should you do if you receive an unexpected email asking for your password?</h3>
+                                <div class="options">
+                                    <div class="option" data-value="0">Reply with your password to verify your identity</div>
+                                    <div class="option" data-value="3">Delete the email and report it as phishing</div>
+                                    <div class="option" data-value="1">Call the company using a number from their official website</div>
+                                    <div class="option" data-value="2">Forward it to your friends to ask their opinion</div>
+                                </div>
+                            </div>
+
+                            <div class="question" data-question="1">
+                                <h3>2. How often should you update your passwords?</h3>
+                                <div class="options">
+                                    <div class="option" data-value="1">Only when there's a data breach</div>
+                                    <div class="option" data-value="3">Every 3-6 months for important accounts</div>
+                                    <div class="option" data-value="0">Never, if they're strong enough</div>
+                                    <div class="option" data-value="2">Every day to be extra safe</div>
+                                </div>
+                            </div>
+
+                            <div class="question" data-question="2">
+                                <h3>3. What is the most secure type of two-factor authentication?</h3>
+                                <div class="options">
+                                    <div class="option" data-value="2">SMS text messages</div>
+                                    <div class="option" data-value="3">Hardware security keys</div>
+                                    <div class="option" data-value="1">Email verification</div>
+                                    <div class="option" data-value="0">Security questions</div>
+                                </div>
+                            </div>
+
+                            <div class="question" data-question="3">
+                                <h3>4. What should you do before connecting to public WiFi?</h3>
+                                <div class="options">
+                                    <div class="option" data-value="1">Nothing, public WiFi is always safe</div>
+                                    <div class="option" data-value="0">Share the connection with others</div>
+                                    <div class="option" data-value="3">Use a VPN and avoid sensitive activities</div>
+                                    <div class="option" data-value="2">Turn off your firewall for better connectivity</div>
+                                </div>
+                            </div>
+
+                            <div class="question" data-question="4">
+                                <h3>5. How can you identify a secure website?</h3>
+                                <div class="options">
+                                    <div class="option" data-value="2">It has lots of images and colors</div>
+                                    <div class="option" data-value="3">It uses HTTPS and has a valid SSL certificate</div>
+                                    <div class="option" data-value="1">It asks for your personal information</div>
+                                    <div class="option" data-value="0">It loads very quickly</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button id="submitQuiz" class="btn btn-primary" style="width: 100%; margin-top: 2rem;">
+                            Submit Quiz
+                        </button>
+
+                        <div id="quizResult" class="quiz-result hidden">
+                            <h3 id="scoreTitle">Your Cybersecurity Score</h3>
+                            <div id="scoreDisplay" style="font-size: 3rem; font-weight: bold; color: var(--accent-blue); margin: 1rem 0;"></div>
+                            <p id="scoreDescription"></p>
+                            <div id="recommendations" style="margin-top: 2rem;">
+                                <h4>Recommendations:</h4>
+                                <ul id="recommendationsList"></ul>
+                            </div>
+                            <button class="btn btn-outline" id="restartQuiz" style="margin-top: 2rem;">
+                                <i data-lucide="rotate-ccw"></i> Retake Quiz
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Resources Page -->
+        <div id="resourcesPage" class="">
+            <section class="page-content">
+                <div class="container">
+                    <div class="page-header">
+                        <h1>Cybersecurity Resources</h1>
+                        <p>Essential tools, guides, and links to help you stay secure online.</p>
+                    </div>
+
+                    <div class="content-section">
+                        <h2><i data-lucide="download"></i> Downloadable Resources</h2>
+                        <div class="cards-grid">
+                            <div class="card">
+                                <h3><i data-lucide="file-text"></i> Cybersecurity Safety Checklist</h3>
+                                <p>A comprehensive checklist covering password management, software updates, backup strategies, and security settings.</p>
+                                <a href="#" class="btn btn-primary" data-resource="checklist">
+                                    <i data-lucide="download"></i> Download PDF
+                                </a>
+                            </div>
+                            <div class="card">
+                                <h3><i data-lucide="shield"></i> Phishing Identification Guide</h3>
+                                <p>Visual guide to help you identify and avoid phishing attempts across email, text, and social media platforms.</p>
+                                <a href="#" class="btn btn-primary" data-resource="phishing-guide">
+                                    <i data-lucide="download"></i> Download PDF
+                                </a>
+                            </div>
+                            <div class="card">
+                                <h3><i data-lucide="smartphone"></i> Mobile Security Handbook</h3>
+                                <p>Essential security tips for smartphones and tablets, including app permissions, secure messaging, and mobile banking safety.</p>
+                                <a href="#" class="btn btn-primary" data-resource="mobile-security">
+                                    <i data-lucide="download"></i> Download PDF
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-section">
+                        <h2><i data-lucide="external-link"></i> Trusted External Resources</h2>
+                        <div class="cards-grid">
+                            <div class="card">
+                                <h3><i data-lucide="globe"></i> CERT (Computer Emergency Response Team)</h3>
+                                <p>Official cybersecurity advisories and incident response guidance from government-backed security teams.</p>
+                                <a href="https://www.cisa.gov/cybersecurity" target="_blank" class="btn btn-outline" rel="noopener noreferrer">
+                                    <i data-lucide="external-link"></i> Visit CISA
+                                </a>
+                            </div>
+                            <div class="card">
+                                <h3><i data-lucide="code"></i> OWASP (Open Web Application Security Project)</h3>
+                                <p>Comprehensive resources on web application security, including the famous OWASP Top 10 security risks.</p>
+                                <a href="https://owasp.org" target="_blank" class="btn btn-outline" rel="noopener noreferrer">
+                                    <i data-lucide="external-link"></i> Visit OWASP
+                                </a>
+                            </div>
+                            <div class="card">
+                                <h3><i data-lucide="search"></i> Google Security Blog</h3>
+                                <p>Latest security research, threat intelligence, and best practices from Google's security team.</p>
+                                <a href="https://security.googleblog.com" target="_blank" class="btn btn-outline" rel="noopener noreferrer">
+                                    <i data-lucide="external-link"></i> Visit Google Security
+                                </a>
+                            </div>
+                            <div class="card">
+                                <h3><i data-lucide="lock"></i> KeePass Password Manager</h3>
+                                <p>Free, open-source password manager to securely store and manage all your passwords.</p>
+                                <a href="https://keepass.info" target="_blank" class="btn btn-outline" rel="noopener noreferrer">
+                                    <i data-lucide="external-link"></i> Visit KeePass
+                                </a>
+                            </div>
+                            <div class="card">
+                                <h3><i data-lucide="shield-check"></i> Have I Been Pwned</h3>
+                                <p>Check if your email addresses or passwords have been compromised in known data breaches.</p>
+                                <a href="https://haveibeenpwned.com" target="_blank" class="btn btn-outline" rel="noopener noreferrer">
+                                    <i data-lucide="external-link"></i> Check Breaches
+                                </a>
+                            </div>
+                            <div class="card">
+                                <h3><i data-lucide="cpu"></i> Malwarebytes</h3>
+                                <p>Anti-malware software and cybersecurity education resources for personal and business use.</p>
+                                <a href="https://www.malwarebytes.com" target="_blank" class="btn btn-outline" rel="noopener noreferrer">
+                                    <i data-lucide="external-link"></i> Visit Malwarebytes
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-section">
+                        <h2><i data-lucide="tool"></i> Recommended Security Tools</h2>
+                        <div class="cards-grid">
+                            <div class="card">
+                                <h3>Password Managers</h3>
+                                <ul>
+                                    <li>1Password - Premium password management</li>
+                                    <li>Bitwarden - Open-source with free tier</li>
+                                    <li>KeePass - Free, local password storage</li>
+                                    <li>LastPass - Popular web-based solution</li>
+                                </ul>
+                            </div>
+                            <div class="card">
+                                <h3>VPN Services</h3>
+                                <ul>
+                                    <li>NordVPN - Strong encryption and privacy</li>
+                                    <li>ExpressVPN - Fast and reliable service</li>
+                                    <li>ProtonVPN - Privacy-focused with free tier</li>
+                                    <li>Mullvad - Anonymous payment options</li>
+                                </ul>
+                            </div>
+                            <div class="card">
+                                <h3>Two-Factor Authentication</h3>
+                                <ul>
+                                    <li>Google Authenticator - Simple and reliable</li>
+                                    <li>Authy - Multi-device synchronization</li>
+                                    <li>YubiKey - Hardware security keys</li>
+                                    <li>Microsoft Authenticator - Enterprise integration</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Contact Page -->
+        <div id="contactPage" class="">
+            <section class="page-content">
+                <div class="container">
+                    <div class="page-header">
+                        <h1>Contact Us</h1>
+                        <p>Have questions about cybersecurity? Want to suggest a topic? We'd love to hear from you.</p>
+                    </div>
+
+                    <div style="max-width: 800px; margin: 0 auto;">
+                        <div class="contact-form">
+                            <form id="contactForm">
+                                <div class="form-group">
+                                    <label for="name">Full Name *</label>
+                                    <input type="text" id="name" name="name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email Address *</label>
+                                    <input type="email" id="email" name="email" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="subject">Subject</label>
+                                    <input type="text" id="subject" name="subject" placeholder="What's this about?">
+                                </div>
+                                <div class="form-group">
+                                    <label for="message">Message *</label>
+                                    <textarea id="message" name="message" required placeholder="Tell us how we can help you stay safer online..."></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary" style="width: 100%;">
+                                    <i data-lucide="send"></i>
+                                    Send Message
+                                </button>
+                            </form>
+                        </div>
+
+                        <div class="social-links">
+                            <a href="https://twitter.com/cybersafehub" class="social-link" target="_blank" rel="noopener noreferrer">
+                                <i data-lucide="twitter"></i>
+                            </a>
+                            <a href="https://linkedin.com/company/cybersafehub" class="social-link" target="_blank" rel="noopener noreferrer">
+                                <i data-lucide="linkedin"></i>
+                            </a>
+                            <a href="https://instagram.com/cybersafehub" class="social-link" target="_blank" rel="noopener noreferrer">
+                                <i data-lucide="instagram"></i>
+                            </a>
+                        </div>
+
+                        <div class="card" style="margin-top: 3rem; text-align: center;">
+                            <h3><i data-lucide="clock"></i> Response Time</h3>
+                            <p>We typically respond to inquiries within 24-48 hours. For urgent security concerns, please contact the appropriate authorities or your organization's IT department immediately.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>CyberSafe Hub</h3>
+                    <p>Empowering everyone to stay safe online through education and awareness.</p>
+                    <div class="social-links">
+                        <a href="https://twitter.com/cybersafehub" class="social-link">
+                            <i data-lucide="twitter"></i>
+                        </a>
+                        <a href="https://linkedin.com/company/cybersafehub" class="social-link">
+                            <i data-lucide="linkedin"></i>
+                        </a>
+                        <a href="https://instagram.com/cybersafehub" class="social-link">
+                            <i data-lucide="instagram"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="#" data-page="about">About Us</a>
+                    <a href="#" data-page="awareness">Security Awareness</a>
+                    <a href="#" data-page="news">Latest News</a>
+                    <a href="#" data-page="quiz">Security Quiz</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <a href="#" data-page="resources">Download Guides</a>
+                    <a href="https://www.cisa.gov" target="_blank">CISA Alerts</a>
+                    <a href="https://owasp.org" target="_blank">OWASP Resources</a>
+                    <a href="#" data-page="contact">Contact Support</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Stay Updated</h3>
+                    <p>Follow us for the latest cybersecurity news and tips.</p>
+                    <a href="#" class="btn btn-primary" style="margin-top: 1rem;">Subscribe to Newsletter</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 CyberSafe Hub. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Navigation functionality
+        let currentPage = 'home';
+        const pages = ['home', 'about', 'awareness', 'news', 'quiz', 'resources', 'contact'];
+
+        // Quiz data
+        let quizAnswers = [];
+        const quizData = {
+            questions: 5,
+            correctAnswers: [3, 3, 3, 3, 3] // Correct answer indices for each question
+        };
+
+        // Article database
+        const articles = {
+            'phishing2025': {
+                title: 'Top 5 Phishing Scams in 2025 You Should Know About',
+                meta: 'March 15, 2025 | By CyberSafe Team | 8 min read',
+                content: `
+                    <h2>The Evolution of Phishing in 2025</h2>
+                    <p>As we progress through 2025, cybercriminals continue to evolve their phishing techniques, leveraging advanced technologies like AI and deepfakes to create more convincing attacks. Understanding these new threats is crucial for maintaining your online security.</p>
+                    
+                    <h2>1. AI-Generated Phishing Emails</h2>
+                    <p>Artificial intelligence is now being used to create highly personalized phishing emails that mimic legitimate correspondence. These emails analyze your social media presence and public information to craft convincing messages that appear to come from trusted sources.</p>
+                    
+                    <h3>How to Protect Yourself:</h3>
+                    <ul>
+                        <li>Be suspicious of emails requesting urgent action, even if they seem personalized</li>
+                        <li>Verify requests through alternative communication channels</li>
+                        <li>Look for subtle inconsistencies in writing style or unusual requests</li>
+                    </ul>
+
+                    <h2>2. Deepfake Voice and Video Calls</h2>
+                    <p>Scammers are using deepfake technology to impersonate executives, family members, or trusted contacts through voice and video calls, making urgent requests for money transfers or sensitive information.</p>
+                    
+                    <h3>Warning Signs:</h3>
+                    <ul>
+                        <li>Unusual background noise or audio quality</li>
+                        <li>Requests for immediate action without normal verification processes</li>
+                        <li>Reluctance to meet in person or switch communication methods</li>
+                    </ul>
+
+                    <h2>3. QR Code Phishing</h2>
+                    <p>Malicious QR codes are being placed in public spaces, on fake parking meters, and sent via email to redirect users to phishing websites that steal login credentials or install malware.</p>
+                    
+                    <h2>4. Social Media Account Takeover Schemes</h2>
+                    <p>Attackers compromise social media accounts and use them to send phishing messages to the victim's contacts, leveraging established trust relationships.</p>
+                    
+                    <h2>5. Cryptocurrency Investment Scams</h2>
+                    <p>Fake investment platforms and celebrity endorsements are being used to trick victims into sending cryptocurrency to fraudulent wallets.</p>
+                    
+                    <h2>Best Practices for 2025</h2>
+                    <ul>
+                        <li>Enable two-factor authentication on all accounts</li>
+                        <li>Verify unexpected requests through known contact methods</li>
+                        <li>Keep software and security tools updated</li>
+                        <li>Be skeptical of urgent investment opportunities</li>
+                        <li>Regularly review and secure your social media privacy settings</li>
+                    </ul>`
+            },
+            'apple2025': {
+                title: 'Apple Releases Critical Security Update – Why You Should Update Now',
+                meta: 'March 12, 2025 | Security Updates | 5 min read',
+                content: `
+                    <h2>Critical Vulnerabilities Patched</h2>
+                    <p>Apple has released emergency security updates for iOS 18.4.1, macOS Sonoma 14.4.1, and Safari 17.4.1 to address several critical vulnerabilities that could allow attackers to execute malicious code remotely.</p>
+                    
+                    <h2>What's Being Fixed</h2>
+                    <h3>CVE-2025-24001: WebKit Remote Code Execution</h3>
+                    <p>A critical vulnerability in WebKit could allow malicious websites to execute arbitrary code with kernel privileges. This affects Safari, Mail, and other apps that render web content.</p>
+                    
+                    <h3>CVE-2025-24002: Core Data Memory Corruption</h3>
+                    <p>An out-of-bounds write vulnerability in Core Data could lead to app crashes and potential code execution when processing malicious data files.</p>
+                    
+                    <h3>CVE-2025-24003: Kernel Privilege Escalation</h3>
+                    <p>A race condition in the kernel could allow malicious apps to gain elevated privileges and access sensitive system resources.</p>
+                    
+                    <h2>Affected Devices</h2>
+                    <ul>
+                        <li>iPhone 12 and later</li>
+                        <li>iPad Air (5th generation) and later</li>
+                        <li>iPad Pro 11-inch (3rd generation) and later</li>
+                        <li>iPad Pro 12.9-inch (5th generation) and later</li>
+                        <li>Mac Studio (2022 and later)</li>
+                        <li>MacBook Air (M2, 2022 and later)</li>
+                        <li>MacBook Pro (14-inch, 2023 and later)</li>
+                    </ul>
+                    
+                    <h2>How to Update</h2>
+                    <h3>iOS and iPadOS:</h3>
+                    <ol>
+                        <li>Go to Settings > General > Software Update</li>
+                        <li>Tap "Download and Install"</li>
+                        <li>Follow the on-screen instructions</li>
+                    </ol>
+                    
+                    <h3>macOS:</h3>
+                    <ol>
+                        <li>Click Apple menu > About This Mac > Software Update</li>
+                        <li>Click "Update Now" if available</li>
+                        <li>Restart when prompted</li>
+                    </ol>
+                    
+                    <h2>Why This Matters</h2>
+                    <p>These vulnerabilities are being actively exploited in the wild. Security researchers have observed targeted attacks using these flaws to compromise devices and steal sensitive information. Immediate updating is strongly recommended for all users.</p>`
+            },
+            'ai-cyber': {
+                title: 'How AI is Revolutionizing Both Cyber Attacks and Defense',
+                meta: 'March 10, 2025 | AI Security | 10 min read',
+                content: `
+                    <h2>The Double-Edged Sword of AI in Cybersecurity</h2>
+                    <p>Artificial Intelligence is fundamentally transforming the cybersecurity landscape, simultaneously empowering both attackers and defenders with unprecedented capabilities.</p>
+                    
+                    <h2>AI-Powered Cyber Attacks</h2>
+                    <h3>Automated Vulnerability Discovery</h3>
+                    <p>AI systems can now automatically scan for vulnerabilities across networks, identifying zero-day exploits faster than human researchers. Machine learning algorithms analyze code patterns and system behaviors to discover previously unknown security flaws.</p>
+                    
+                    <h3>Intelligent Social Engineering</h3>
+                    <p>Large language models enable attackers to craft convincing phishing emails, social media posts, and even voice calls that are personalized to specific targets. These AI-generated attacks are increasingly difficult to distinguish from legitimate communication.</p>
+                    
+                    <h3>Adaptive Malware</h3>
+                    <p>AI-driven malware can modify its behavior based on the environment it encounters, evading traditional signature-based detection systems and adapting to defensive countermeasures in real-time.</p>
+                    
+                    <h2>AI in Cybersecurity Defense</h2>
+                    <h3>Behavioral Analysis</h3>
+                    <p>AI systems continuously monitor network traffic and user behavior to establish baselines and detect anomalies that may indicate a security breach. Machine learning algorithms can identify subtle patterns that human analysts might miss.</p>
+                    
+                    <h3>Automated Threat Response</h3>
+                    <p>AI-powered security systems can automatically respond to threats, isolating infected systems, blocking malicious traffic, and initiating incident response procedures within milliseconds of detection.</p>
+                    
+                    <h3>Predictive Security</h3>
+                    <p>Advanced AI models can predict potential attack vectors and vulnerabilities before they are exploited, allowing organizations to proactively strengthen their defenses.</p>
+                    
+                    <h2>The Arms Race</h2>
+                    <p>As AI capabilities advance, we're seeing an escalating arms race between cyber attackers and defenders. The key to staying ahead lies in:</p>
+                    <ul>
+                        <li>Investing in AI-powered security tools and training</li>
+                        <li>Developing ethical AI frameworks for cybersecurity</li>
+                        <li>Fostering collaboration between security researchers and AI developers</li>
+                        <li>Maintaining human oversight in AI-driven security systems</li>
+                    </ul>
+                    
+                    <h2>Future Implications</h2>
+                    <p>The integration of AI in cybersecurity will continue to accelerate, requiring new approaches to security training, policy development, and international cooperation. Organizations must balance the benefits of AI-powered security with the risks of AI-enabled attacks.</p>`
+            },
+            'quantum-threat': {
+                title: 'Preparing for the Quantum Computing Cybersecurity Threat',
+                meta: 'March 8, 2025 | Future Threats | 7 min read',
+                content: `
+                    <h2>The Quantum Revolution</h2>
+                    <p>Quantum computing represents one of the most significant technological advances of our time, promising to solve complex problems that are currently impossible for classical computers. However, this same power poses an existential threat to current encryption methods.</p>
+                    
+                    <h2>The Cryptographic Apocalypse</h2>
+                    <p>Most of today's encryption relies on mathematical problems that are difficult for classical computers to solve, such as factoring large prime numbers. Quantum computers, using Shor's algorithm, could break these encryption methods in hours or days rather than the millions of years it would take classical computers.</p>
+                    
+                    <h3>What's at Risk:</h3>
+                    <ul>
+                        <li>RSA encryption (widely used for secure communications)</li>
+                        <li>Elliptic Curve Cryptography (mobile and IoT devices)</li>
+                        <li>Diffie-Hellman key exchange (establishing secure connections)</li>
+                        <li>Digital signatures and certificates</li>
+                    </ul>
+                    
+                    <h2>Timeline and Current State</h2>
+                    <p>While fault-tolerant quantum computers capable of breaking encryption don't exist yet, experts estimate they could be available within 10-15 years. However, the "harvest now, decrypt later" attacks are already happening, where adversaries collect encrypted data today with the intention of decrypting it once quantum computers become available.</p>
+                    
+                    <h2>Post-Quantum Cryptography</h2>
+                    <p>The National Institute of Standards and Technology (NIST) has been working to standardize quantum-resistant encryption algorithms. In 2024, NIST published the first set of post-quantum cryptographic standards:</p>
+                    
+                    <h3>Approved Algorithms:</h3>
+                    <ul>
+                        <li><strong>CRYSTALS-Kyber:</strong> Key encapsulation mechanism</li>
+                        <li><strong>CRYSTALS-Dilithium:</strong> Digital signatures</li>
+                        <li><strong>FALCON:</strong> Digital signatures (compact)</li>
+                        <li><strong>SPHINCS+:</strong> Hash-based signatures</li>
+                    </ul>
+                    
+                    <h2>Preparing for the Transition</h2>
+                    <h3>For Organizations:</h3>
+                    <ul>
+                        <li>Conduct cryptographic inventories to identify vulnerable systems</li>
+                        <li>Develop migration timelines for post-quantum algorithms</li>
+                        <li>Test quantum-safe implementations in non-production environments</li>
+                        <li>Train security teams on post-quantum cryptography</li>
+                    </ul>
+                    
+                    <h3>For Individuals:</h3>
+                    <ul>
+                        <li>Stay informed about quantum-safe software updates</li>
+                        <li>Use services that are already implementing post-quantum cryptography</li>
+                        <li>Be cautious about long-term sensitive data storage</li>
+                    </ul>
+                    
+                    <h2>The Hybrid Approach</h2>
+                    <p>Many organizations are adopting a hybrid cryptographic approach, using both classical and post-quantum algorithms together. This provides security against both current and future threats while allowing time for thorough testing of new quantum-safe methods.</p>
+                    
+                    <h2>Looking Ahead</h2>
+                    <p>The quantum threat is both urgent and distant. While quantum computers capable of breaking encryption may be years away, the preparation must begin now. The organizations that start their quantum-safe transition early will be best positioned to protect their data and systems in the post-quantum world.</p>`
+            },
+            'iot-security': {
+                title: 'IoT Devices: The Weakest Link in Home Security',
+                meta: 'March 5, 2025 | IoT Security | 6 min read',
+                content: `
+                    <h2>The IoT Security Crisis</h2>
+                    <p>The Internet of Things (IoT) has transformed our homes into smart, connected environments. However, the rush to market with IoT devices has left many products with serious security vulnerabilities that make them easy targets for cybercriminals.</p>
+                    
+                    <h2>Common IoT Vulnerabilities</h2>
+                    <h3>Weak Default Credentials</h3>
+                    <p>Many IoT devices ship with default usernames and passwords like "admin/admin" or "admin/password". Users often never change these credentials, leaving devices exposed to attack.</p>
+                    
+                    <h3>Laxk of Encryption</h3>
+                    <p>Some IoT devices transmit data in plain text, allowing attackers on the same network to intercept sensitive information, including video feeds, sensor data, and control commands.</p>
+                    
+                    <h3>Insufficient Update Mechanisms</h3>
+                    <p>Many IoT devices lack proper update mechanisms or receive infrequent security patches, leaving known vulnerabilities unpatched for months or years.</p>
+                    
+                    <h3>Insecure Network Protocols</h3>
+                    <p>Some devices use outdated or insecure network protocols that are vulnerable to man-in-the-middle attacks and unauthorized access.</p>
+                    
+                    <h2>Recent Attack Vectors</h2>
+                    <h3>Botnet Recruitment</h3>
+                    <p>Compromised IoT devices are often recruited into botnets for distributed denial-of-service (DDoS) attacks. The Mirai botnet, which primarily targeted IoT devices, demonstrated the massive scale of this threat.</p>
+                    
+                    <h3>Lateral Network Movement</h3>
+                    <p>Attackers use compromised IoT devices as entry points to access other devices on the home network, potentially reaching computers, smartphones, and sensitive data.</p>
+                    
+                    <h3>Privacy Invasion</h3>
+                    <p>Smart cameras, voice assistants, and other IoT devices can be compromised to spy on users, record conversations, or capture video footage without authorization.</p>
+                    
+                    <h2>Securing Your IoT Devices</h2>
+                    <h3>Before Purchase:</h3>
+                    <ul>
+                        <li>Research the manufacturer's security track record</li>
+                        <li>Check if the device receives regular security updates</li>
+                        <li>Read privacy policies and data collection practices</li>
+                        <li>Look for security certifications or compliance standards</li>
+                    </ul>
+                    
+                    <h3>During Setup:</h3>
+                    <ul>
+                        <li>Change all default passwords to strong, unique credentials</li>
+                        <li>Enable two-factor authentication when available</li>
+                        <li>Configure devices to use WPA3 encryption on your WiFi network</li>
+                        <li>Disable unnecessary features and permissions</li>
+                    </ul>
+                    
+                    <h3>Ongoing Management:</h3>
+                    <ul>
+                        <li>Regularly check for and install firmware updates</li>
+                        <li>Monitor network traffic for unusual activity</li>
+                        <li>Segment IoT devices on a separate network when possible</li>
+                        <li>Regularly audit connected devices and remove unused ones</li>
+                    </ul>
+                    
+                    <h2>Network Segmentation Strategy</h2>
+                    <p>One of the most effective ways to secure IoT devices is to isolate them on a separate network segment. This prevents compromised IoT devices from accessing sensitive devices like computers and smartphones on your main network.</p>
+                    
+                    <h3>Implementation Options:</h3>
+                    <ul>
+                        <li>Set up a guest network for IoT devices</li>
+                        <li>Use VLAN segmentation on enterprise-grade routers</li>
+                        <li>Implement firewall rules to restrict inter-device communication</li>
+                        <li>Consider dedicated IoT security appliances</li>
+                    </ul>
+                    
+                    <h2>The Future of IoT Security</h2>
+                    <p>Industry initiatives and regulations are beginning to address IoT security concerns. The EU's Cyber Resilience Act and similar regulations worldwide are pushing manufacturers to implement better security practices. However, users must remain vigilant and proactive in securing their connected homes.</p>`
+            },
+            'zero-trust': {
+                title: 'Zero Trust Architecture: The New Standard for Enterprise Security',
+                meta: 'March 3, 2025 | Enterprise Security | 9 min read',
+                content: `
+                    <h2>Rethinking Network Security</h2>
+                    <p>The traditional "castle and moat" approach to network security, where everything inside the network perimeter is trusted, is no longer adequate for today's distributed, cloud-first business environment. Zero Trust Architecture represents a fundamental shift in how we approach cybersecurity.</p>
+                    
+                    <h2>Core Principles of Zero Trust</h2>
+                    <h3>Never Trust, Always Verify</h3>
+                    <p>Zero Trust assumes that threats can come from anywhere, both inside and outside the network. Every user, device, and application must be authenticated and authorized before accessing any resources, regardless of their location.</p>
+                    
+                    <h3>Least Privilege Access</h3>
+                    <p>Users and systems are granted only the minimum level of access required to perform their specific functions. This principle limits the potential damage from compromised accounts or insider threats.</p>
+                    
+                    <h3>Continuous Monitoring and Validation</h3>
+                    <p>Zero Trust continuously monitors and validates the security posture of users, devices, and applications, adjusting access permissions based on real-time risk assessment.</p>
+                    
+                    <h2>Key Components of Zero Trust</h2>
+                    <h3>Identity and Access Management (IAM)</h3>
+                    <p>Strong identity verification is the foundation of Zero Trust. This includes multi-factor authentication, privileged access management, and identity governance.</p>
+                    
+                    <h3>Device Security</h3>
+                    <p>All devices must be registered, authenticated, and monitored. Device compliance policies ensure that only secure, up-to-date devices can access network resources.</p>
+                    
+                    <h3>Network Segmentation</h3>
+                    <p>Micro-segmentation divides the network into small, isolated zones, limiting lateral movement for attackers and containing potential breaches.</p>
+                    
+                    <h3>Application Security</h3>
+                    <p>Applications are protected through secure development practices, runtime protection, and continuous security testing.</p>
+                    
+                    <h3>Data Protection</h3>
+                    <p>Data is classified, encrypted, and protected with appropriate access controls throughout its lifecycle, from creation to destruction.</p>
+                    
+                    <h2>Benefits of Zero Trust Implementation</h2>
+                    <ul>
+                        <li><strong>Reduced Attack Surface:</strong> Micro-segmentation limits exposure of sensitive resources</li>
+                        <li><strong>Improved Visibility:</strong> Comprehensive monitoring provides better insight into network activity</li>
+                        <li><strong>Enhanced Compliance:</strong> Detailed access controls and audit trails support regulatory requirements</li>
+                        <li><strong>Support for Remote Work:</strong> Secure access from anywhere without traditional VPN limitations</li>
+                        <li><strong>Cloud Security:</strong> Consistent security policies across on-premises and cloud environments</li>
+                    </ul>
+                    
+                    <h2>Implementation Challenges</h2>
+                    <h3>Cultural Resistance</h3>
+                    <p>Moving from implicit trust to explicit verification can face resistance from users accustomed to easier access methods. Change management and user education are crucial.</p>
+                    
+                    <h3>Technical Complexity</h3>
+                    <p>Zero Trust requires integration of multiple security technologies and careful configuration to avoid disrupting business operations.</p>
+                    
+                    <h3>Legacy System Integration</h3>
+                    <p>Older systems may not support modern authentication and authorization protocols, requiring creative solutions or system upgrades.</p>
+                    
+                    <h2>Implementation Roadmap</h2>
+                    <h3>Phase 1: Assessment and Planning</h3>
+                    <ul>
+                        <li>Inventory all assets, users, and data flows</li>
+                        <li>Identify critical resources and high-risk areas</li>
+                        <li>Develop a phased implementation plan</li>
+                    </ul>
+                    
+                    <h3>Phase 2: Identity and Access Foundation</h3>
+                    <ul>
+                        <li>Implement strong identity management systems</li>
+                        <li>Deploy multi-factor authentication</li>
+                        <li>Establish privileged access management</li>
+                    </ul>
+                    
+                    <h3>Phase 3: Network and Device Security</h3>
+                    <ul>
+                        <li>Implement micro-segmentation</li>
+                        <li>Deploy device compliance policies</li>
+                        <li>Set up continuous monitoring systems</li>
+                    </ul>
+                    
+                    <h3>Phase 4: Application and Data Protection</h3>
+                    <ul>
+                        <li>Implement application-level security controls</li>
+                        <li>Deploy data classification and protection</li>
+                        <li>Establish secure development practices</li>
+                    </ul>
+                    
+                    <h2>Success Metrics</h2>
+                    <p>Organizations implementing Zero Trust should measure success through:</p>
+                    <ul>
+                        <li>Reduction in security incidents and data breaches</li>
+                        <li>Improved incident response times</li>
+                        <li>Enhanced visibility into network activity</li>
+                        <li>Reduced privileged access violations</li>
+                        <li>Improved compliance audit results</li>
+                    </ul>
+                    
+                    <h2>The Future of Zero Trust</h2>
+                    <p>Zero Trust is becoming the de facto standard for enterprise security, with government mandates and industry best practices driving adoption. As artificial intelligence and machine learning capabilities improve, Zero Trust systems will become more intelligent and adaptive, providing even stronger security with less user friction.</p>`
+            }
+        };
+
+        // Initialize the application
+        function initApp() {
+            // Initialize icons
+            lucide.createIcons();
+            
+            // Set up mobile menu toggle
+            document.getElementById('mobileToggle').addEventListener('click', function() {
+                const navLinks = document.getElementById('navLinks');
+                navLinks.classList.toggle('active');
+            });
+            
+            // Set up navigation
+            document.querySelectorAll('.nav-link, .btn[data-page], .footer a[data-page]').forEach(element => {
+                element.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const page = this.getAttribute('data-page');
+                    showPage(page);
+                });
+            });
+            
+            // Set up news article clicks
+            document.querySelectorAll('.news-card').forEach(card => {
+                card.addEventListener('click', function() {
+                    const articleId = this.getAttribute('data-article');
+                    showArticle(articleId);
+                });
+            });
+            
+            // Set up share buttons
+            document.querySelectorAll('.share-btn').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation(); // Prevent triggering the article click
+                    const platform = this.getAttribute('data-platform');
+                    const articleId = this.getAttribute('data-article');
+                    shareArticle(platform, articleId);
+                });
+            });
+            
+            // Set up back to news button
+            document.getElementById('backToNews').addEventListener('click', function() {
+                showPage('news');
+            });
+            
+            // Set up quiz functionality
+            document.querySelectorAll('.option').forEach(option => {
+                option.addEventListener('click', function() {
+                    const question = this.closest('.question');
+                    question.querySelectorAll('.option').forEach(opt => {
+                        opt.classList.remove('selected');
+                    });
+                    this.classList.add('selected');
+                });
+            });
+            
+            document.getElementById('submitQuiz').addEventListener('click', calculateQuizScore);
+            document.getElementById('restartQuiz').addEventListener('click', restartQuiz);
+            
+            // Set up resource downloads
+            document.querySelectorAll('a[data-resource]').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const resource = this.getAttribute('data-resource');
+                    downloadResource(resource);
+                });
+            });
+            
+            // Set up contact form
+            document.getElementById('contactForm').addEventListener('submit', submitContact);
+            
+            // Show home page by default
+            showPage('home');
+        }
+
+        // Page navigation
+        function showPage(pageName) {
+            // Hide all pages
+            pages.forEach(page => {
+                const pageElement = document.getElementById(page + 'Page');
+                if (pageElement) {
+                    pageElement.classList.add('hidden');
+                }
+            });
+            
+            // Hide article view
+            document.getElementById('articleView').classList.add('hidden');
+            
+            // Show selected page
+            const selectedPage = document.getElementById(pageName + 'Page');
+            if (selectedPage) {
+                selectedPage.classList.remove('hidden');
+                currentPage = pageName;
+                
+                // Update navigation active state
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.classList.remove('active');
+                });
+                
+                const activeLink = document.querySelector(`[data-page="${pageName}"]`);
+                if (activeLink && activeLink.classList.contains('nav-link')) {
+                    activeLink.classList.add('active');
+                }
+                
+                // Close mobile menu
+                document.getElementById('navLinks').classList.remove('active');
+                
+                // Scroll to top
+                window.scrollTo(0, 0);
+                
+                // Update page title and meta description
+                updatePageMetadata(pageName);
+            }
+        }
+
+        // Update page metadata for SEO
+        function updatePageMetadata(pageName) {
+            const metadata = {
+                home: {
+                    title: 'CyberSafe Hub - Stay Safe Online | Cybersecurity Awareness for Everyone',
+                    description: 'Learn cybersecurity awareness, online safety tips, and stay updated with latest cyber threats. Protect yourself from phishing attacks, ransomware, and digital threats in 2025.'
+                },
+                about: {
+                    title: 'About CyberSafe Hub | Our Mission to Promote Cybersecurity Awareness',
+                    description: 'Learn about CyberSafe Hub\'s mission to educate students, professionals, and the public about cybersecurity threats and online safety practices.'
+                },
+                awareness: {
+                    title: 'Cybersecurity Awareness | Learn About Online Threats & Protection',
+                    description: 'Comprehensive guide to cybersecurity awareness including phishing attacks, ransomware protection, password safety, and two-factor authentication best practices.'
+                },
+                news: {
+                    title: 'Latest Cybersecurity News 2025 | Cyber Threats & Security Updates',
+                    description: 'Stay updated with the latest cybersecurity news, threat intelligence, and security updates. Read about phishing scams, data breaches, and protection strategies.'
+                },
+                quiz: {
+                    title: 'Cybersecurity Quiz - Test Your Online Safety Knowledge | CyberSafe Hub',
+                    description: 'Take our interactive cybersecurity quiz to test your knowledge of online safety, phishing detection, password security, and digital threat awareness.'
+                },
+                resources: {
+                    title: 'Cybersecurity Resources | Download Guides & Security Tools',
+                    description: 'Access free cybersecurity resources including safety checklists, security guides, and links to trusted cybersecurity organizations and tools.'
+                },
+                contact: {
+                    title: 'Contact CyberSafe Hub | Get Cybersecurity Help & Support',
+                    description: 'Contact CyberSafe Hub for cybersecurity questions, support, or to suggest topics. Connect with us on social media for the latest security tips.'
+                }
+            };
+            
+            if (metadata[pageName]) {
+                document.title = metadata[pageName].title;
+                const metaDesc = document.querySelector('meta[name="description"]');
+                if (metaDesc) {
+                    metaDesc.content = metadata[pageName].description;
+                }
+            }
+        }
+
+        // Article functions
+        function showArticle(articleId) {
+            if (articles[articleId]) {
+                document.getElementById('articleTitle').textContent = articles[articleId].title;
+                document.getElementById('articleMeta').textContent = articles[articleId].meta;
+                document.getElementById('articleContent').innerHTML = articles[articleId].content;
+                
+                // Hide all pages and show article view
+                pages.forEach(page => {
+                    document.getElementById(page + 'Page').classList.add('hidden');
+                });
+                document.getElementById('articleView').classList.remove('hidden');
+                
+                // Update title
+                document.title = articles[articleId].title + ' | CyberSafe Hub';
+                
+                // Scroll to top
+                window.scrollTo(0, 0);
+                
+                // Reinitialize icons for any new icons in the article content
+                lucide.createIcons();
+            }
+        }
+
+        function shareArticle(platform, articleId) {
+            const currentUrl = window.location.href;
+            const title = articles[articleId].title;
+            
+            let shareUrl;
+            switch (platform) {
+                case 'twitter':
+                    shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(currentUrl)}`;
+                    break;
+                case 'linkedin':
+                    shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(currentUrl)}`;
+                    break;
+                case 'facebook':
+                    shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(currentUrl)}`;
+                    break;
+                default:
+                    return;
+            }
+            
+            window.open(shareUrl, '_blank', 'width=600,height=400');
+        }
+
+        // Quiz functions
+        function calculateQuizScore() {
+            const questions = document.querySelectorAll('.question');
+            let score = 0;
+            quizAnswers = [];
+            
+            questions.forEach((question, index) => {
+                const selectedOption = question.querySelector('.option.selected');
+                if (selectedOption) {
+                    const answer = parseInt(selectedOption.dataset.value);
+                    quizAnswers[index] = answer;
+                    if (answer === quizData.correctAnswers[index]) {
+                        score++;
+                    }
+                }
+            });
+            
+            displayQuizResult(score);
+        }
+
+        function displayQuizResult(score) {
+            const percentage = Math.round((score / quizData.questions) * 100);
+            const resultDiv = document.getElementById('quizResult');
+            const scoreDisplay = document.getElementById('scoreDisplay');
+            const scoreDescription = document.getElementById('scoreDescription');
+            const recommendationsList = document.getElementById('recommendationsList');
+            
+            // Hide questions and submit button
+            document.getElementById('quizQuestions').style.display = 'none';
+            document.getElementById('submitQuiz').style.display = 'none';
+            
+            // Show results
+            resultDiv.classList.remove('hidden');
+            scoreDisplay.textContent = `${score}/${quizData.questions} (${percentage}%)`;
+            
+            // Provide feedback based on score
+            let description, recommendations;
+            if (percentage >= 80) {
+                description = "Excellent! You have strong cybersecurity awareness and are well-prepared to handle most online threats.";
+                recommendations = [
+                    "Continue staying updated with the latest cybersecurity news",
+                    "Help educate others about cybersecurity best practices",
+                    "Consider pursuing advanced cybersecurity certifications"
+                ];
+                scoreDisplay.style.color = 'var(--success)';
+            } else if (percentage >= 60) {
+                description = "Good job! You have a solid foundation in cybersecurity, but there's room for improvement in some areas.";
+                recommendations = [
+                    "Review our cybersecurity awareness content regularly",
+                    "Practice identifying phishing emails and suspicious links",
+                    "Enable two-factor authentication on all your accounts",
+                    "Keep your software and devices updated"
+                ];
+                scoreDisplay.style.color = 'var(--warning)';
+            } else {
+                description = "You're on the right track, but there are important cybersecurity concepts you should learn to stay safe online.";
+                recommendations = [
+                    "Start with our cybersecurity awareness guide",
+                    "Learn to identify common phishing techniques",
+                    "Use a password manager for strong, unique passwords",
+                    "Enable automatic software updates",
+                    "Be cautious when using public WiFi networks"
+                ];
+                scoreDisplay.style.color = 'var(--danger)';
+            }
+            
+            scoreDescription.textContent = description;
+            
+            // Clear and populate recommendations
+            recommendationsList.innerHTML = '';
+            recommendations.forEach(rec => {
+                const li = document.createElement('li');
+                li.textContent = rec;
+                recommendationsList.appendChild(li);
+            });
+        }
+
+        function restartQuiz() {
+            // Reset quiz state
+            quizAnswers = [];
+            
+            // Clear all selections
+            document.querySelectorAll('.option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            
+            // Show questions and submit button
+            document.getElementById('quizQuestions').style.display = 'block';
+            document.getElementById('submitQuiz').style.display = 'block';
+            
+            // Hide results
+            document.getElementById('quizResult').classList.add('hidden');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        // Resource download function
+        function downloadResource(resourceType) {
+            // In a real implementation, this would trigger actual file downloads
+            const resources = {
+                'checklist': {
+                    name: 'Cybersecurity Safety Checklist',
+                    filename: 'cybersecurity-safety-checklist.pdf'
+                },
+                'phishing-guide': {
+                    name: 'Phishing Identification Guide',
+                    filename: 'phishing-identification-guide.pdf'
+                },
+                'mobile-security': {
+                    name: 'Mobile Security Handbook',
+                    filename: 'mobile-security-handbook.pdf'
+                }
+            };
+            
+            if (resources[resourceType]) {
+                alert(`Downloading: ${resources[resourceType].name}\n\nNote: This is a demo. In a real implementation, the ${resources[resourceType].filename} file would be downloaded to your device.`);
+            }
+        }
+
+        // Contact form submission
+        function submitContact(event) {
+            event.preventDefault();
+            
+            const formData = new FormData(event.target);
+            const data = {
+                name: formData.get('name'),
+                email: formData.get('email'),
+                subject: formData.get('subject'),
+                message: formData.get('message')
+            };
+            
+            // In a real implementation, this would send the data to a server
+            alert(`Thank you for your message, ${data.name}!\n\nWe'll respond to ${data.email} within 24-48 hours.\n\nSubject: ${data.subject || 'General Inquiry'}\n\nNote: This is a demo. In a real implementation, your message would be sent to our support team.`);
+            
+            // Reset form
+            event.target.reset();
+        }
+
+        // Initialize the app when DOM is loaded
+        document.addEventListener('DOMContentLoaded', initApp);
+    </script>
+</body>
+</html>
